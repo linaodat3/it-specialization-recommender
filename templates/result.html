@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تفاصيل التخصص - {{ spec_name }}</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: #f9fafb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      direction: rtl;
+      color: #222;
+    }
+    .header {
+      background: #5563DE;
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem 0.75rem 0 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgb(85 99 222 / 0.3);
+    }
+    .container-details {
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 20px rgb(0 0 0 / 0.1);
+      padding: 2rem 3rem;
+    }
+    h2 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #5563DE;
+      font-weight: 600;
+      border-bottom: 2px solid #FF6F91;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      list-style-type: disc;
+      padding-right: 20px;
+    }
+    li {
+      margin-bottom: 0.4rem;
+    }
+    a.email-link {
+      color: #FF6F91;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a.email-link:hover {
+      text-decoration: underline;
+    }
+    .btn-back {
+      background: #FF6F91;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 3px 10px rgb(255 111 145 / 0.5);
+      transition: background 0.3s ease;
+      text-align: center;
+      display: inline-block;
+      margin-top: 2rem;
+    }
+    .btn-back:hover {
+      background: #FF3D68;
+      text-decoration: none;
+    }
+    .expert-info p {
+      margin-bottom: 0.3rem;
+    }
+    /* Tooltip styling */
+    [data-bs-toggle="tooltip"] {
+      cursor: pointer;
+      border-bottom: 1px dotted #FF6F91;
+    }
+  </style>
+
+  <!-- Bootstrap JS + Popper for tooltips -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="header">
+    <h1>التخصص: {{ spec_name }}</h1>
+  </div>
+
+  <div class="container-details">
+
+    <h4>الوصف العام</h4>
+    <p>{{ details.desc }}</p>
+
+    <h4>التخصصات الفرعية</h4>
+    <ul>
+      {% for subfield in details.subfields %}
+      <li>{{ subfield }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>المهارات المطلوبة</h4>
+    <ul>
+      {% for skill in details.skills_required %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>المسارات الوظيفية</h4>
+    <ul>
+      {% for career in details.career_paths %}
+      <li>{{ career }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>أمثلة مشاريع</h4>
+    <ul>
+      {% for project in details.projects_examples %}
+      <li>{{ project }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>مصادر التعلم</h4>
+    <p><strong>كتب مميزة:</strong></p>
+    <ul>
+      {% for book in details.learning_resources.books %}
+      <li>{{ book }}</li>
+      {% endfor %}
+    </ul>
+    <p><strong>كورسات أونلاين:</strong></p>
+    <ul>
+      {% for course in details.learning_resources.online_courses %}
+      <li>{{ course }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>الشخصية المناسبة</h4>
+    <ul>
+      {% for trait in details.personality_fit %}
+      <li>{{ trait }}</li>
+      {% endfor %}
+    </ul>
+
+    <h4>الخبير ومستشاره</h4>
+    <div class="expert-info">
+      <p><strong>الاسم:</strong> {{ details.expert.name }}</p>
+      <p><strong>البريد الإلكتروني:</strong> 
+        <a class="email-link" href="mailto:{{ details.expert.email }}">{{ details.expert.email }}</a>
+      </p>
+      <p><strong>ساعات المكتب:</strong> {{ details.expert.office_hours }}</p>
+      <p><strong>نبذة عنه:</strong> {{ details.expert.bio }}</p>
+    </div>
+
+    <h4>نصائح مهمة</h4>
+    <p>{{ details.advice }}</p>
+
+    <a href="{{ url_for('index') }}" class="btn-back">العودة لاختيار تخصص آخر</a>
+  </div>
+
+  <script>
+    // تفعيل التولتيب tooltip في Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
+</body>
+</html>

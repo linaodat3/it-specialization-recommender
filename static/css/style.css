@@ -1,0 +1,166 @@
+/* ========== Fonts & Reset ========== */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
+  min-height: 100vh;
+  color: #f0f0f5;
+  direction: rtl;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ========== Container & Layout ========== */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  padding: 30px 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+.container:hover {
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  transform: translateY(-5px);
+}
+
+/* ========== Headings ========== */
+h1, h2, h3, h4 {
+  color: #f7f7fc;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 3px solid #ff3366;
+  padding-bottom: 10px;
+  margin-top: 40px;
+  letter-spacing: 1.2px;
+}
+
+/* ========== Forms ========== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f7f7fc;
+}
+
+select, input, button {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: inset 0 0 7px rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.85);
+  color: #222;
+}
+
+select:hover, input:hover, button:hover,
+select:focus, input:focus, button:focus {
+  box-shadow: 0 0 15px #ff3366;
+  background: #fff;
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff3366, #ff6699);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.6);
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ff6699, #ff3366);
+  box-shadow: 0 12px 30px rgba(255, 102, 153, 0.8);
+  transform: translateY(-3px);
+}
+
+/* ========== Lists ========== */
+ul {
+  list-style: disc inside;
+  margin-top: 10px;
+  color: #eee;
+}
+
+li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ========== Cards ========== */
+.card {
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  padding: 25px 35px;
+  margin: 30px 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 51, 102, 0.7);
+}
+
+/* ========== Links ========== */
+a {
+  color: #ff3366;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 20px;
+    margin: 20px 15px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+
+  select, input, button {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
